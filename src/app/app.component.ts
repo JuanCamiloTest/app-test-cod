@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild, inject } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('btn2') btn2!: ElementRef;
   title = 'app-test-cod';
 
-  constructor(private readonly render: Renderer2) {}
+  // constructor(private readonly render: Renderer2) {}
+  private readonly render = inject(Renderer2);
 
   ngOnInit(): void {}
 
