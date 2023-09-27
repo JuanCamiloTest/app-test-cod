@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Renderer2, ViewChild, inject } from '@angular/core';
 
 @Component({
   selector: 'app-root',
