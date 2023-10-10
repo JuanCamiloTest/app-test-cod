@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Renderer2, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild, inject } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +11,7 @@ export class AppComponent implements AfterViewInit {
   title = 'app-test-cod';
 
   private readonly render = inject(Renderer2);
+  private readonly el = inject(ElementRef);
 
   @ViewChild('btn3') set setBtn2(btn: ElementRef) {
     // TODO: con el método set no se requiera de implementar el ngAfterViewInit.
@@ -26,17 +27,18 @@ export class AppComponent implements AfterViewInit {
   // private readonly render = inject(Renderer2);
 
   ngAfterViewInit(): void {
-    console.log('ngAfterViewInit --> ', this.btn2);
     this.render.listen(this.btn2.nativeElement, 'click', () => this.eventClickFromController(2));
+    const parent = this.render.createElement('h3');
+    const child = this.render.createText('Hola mundo');
+    this.render.appendChild(parent, child);
+    this.render.appendChild(this.el.nativeElement, parent);
   }
 
   eventClickFromTemplate(): void {
-    console.log('Hola me llaman desde el template :]');
     alert('Hola me llaman desde el template :]');
   }
   
   eventClickFromController(id: number): void {
-    console.log('Hola me llaman desde el controller :]', id);
     alert('Hola me llaman desde el controller :]' + id);
   }
 
