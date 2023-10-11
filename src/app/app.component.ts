@@ -9,9 +9,13 @@ export class AppComponent implements AfterViewInit {
 
   @ViewChild('btn2') btn2!: ElementRef;
   title = 'app-test-cod';
-
+  
   private readonly render = inject(Renderer2);
   private readonly el = inject(ElementRef);
+  
+  @ViewChild('app-root') set vista(vt: ElementRef) {
+    console.log('-----------', vt, '-----------');
+  };
 
   @ViewChild('btn3') set setBtn2(btn: ElementRef) {
     // TODO: con el método set no se requiera de implementar el ngAfterViewInit.
@@ -27,6 +31,7 @@ export class AppComponent implements AfterViewInit {
   // private readonly render = inject(Renderer2);
 
   ngAfterViewInit(): void {
+    console.log('1-', this.el);
     this.render.listen(this.btn2.nativeElement, 'click', () => this.eventClickFromController(2));
     const parent = this.render.createElement('h3');
     const child = this.render.createText('Hola mundo');
