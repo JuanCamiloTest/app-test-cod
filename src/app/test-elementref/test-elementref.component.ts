@@ -7,6 +7,10 @@ import { Component, ElementRef, OnInit, Renderer2, inject } from '@angular/core'
 })
 export class TestElementrefComponent implements OnInit {
 
+  private hl = '';
+  #hl = '';
+  hl2 = '';
+
   private readonly el = inject(ElementRef);
   private readonly render = inject(Renderer2);
 

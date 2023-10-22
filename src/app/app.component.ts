@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild, inject } from '@angular/core';
+import { TestService } from './services/test.service';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ export class AppComponent implements AfterViewInit {
   
   private readonly render = inject(Renderer2);
   private readonly el = inject(ElementRef);
+  private readonly tS = inject(TestService);
   
   @ViewChild('app-root') set vista(vt: ElementRef) {
     console.log('-----------', vt, '-----------');
@@ -37,6 +39,13 @@ export class AppComponent implements AfterViewInit {
     const child = this.render.createText('Hola mundo');
     this.render.appendChild(parent, child);
     this.render.appendChild(this.el.nativeElement, parent);
+
+    console.log("-------------------------------");
+    this.tS.request1().subscribe({
+      next: res => console.log(res),
+      error: err => console.log(err)
+    });
+    
   }
 
   eventClickFromTemplate(): void {
