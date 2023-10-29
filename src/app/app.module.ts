@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { TestElementrefComponent } from './test-elementref/test-elementref.component';
+import { CommonModule } from '@angular/common';
+// import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,6 +13,7 @@ import { TestElementrefComponent } from './test-elementref/test-elementref.compo
     TestElementrefComponent
   ],
   imports: [
+    // CommonModule,
     BrowserModule,
     HttpClientModule
   ],

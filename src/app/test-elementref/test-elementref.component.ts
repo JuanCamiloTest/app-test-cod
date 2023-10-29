@@ -15,7 +15,7 @@ export class TestElementrefComponent implements OnInit {
   private readonly render = inject(Renderer2);
 
   ngOnInit(): void {
-    console.log('2-', this.el);
+    // console.log('2-', this.el);
     // nota para mi concepto es mejor ejecutar el render en el afterViewInit()
     if (false) {
       const div = this.render.createElement('div');
